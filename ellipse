@@ -1,20 +1,26 @@
 class Ellipse:
     def Ellipse(self,r):
         galaxy = [[0 for i in range((r+1)*2)] for i in range((r+1)*2)]
+        sectors = 0
         for x in range (2*r+2):
             for y in range (2*r+2):
                 d = pow(x-r-0.5,2)+pow(r-y+0.5,2)
                 if d<pow(r,2):
                     if x>r and y<r+1:
                         galaxy[y][x]="I"
+                        sectors+=1
                     if x<r+1 and y<r+1:
                         galaxy[y][x]="II"
+                        sectors+=1
                     if x<r+1 and y>r:
                         galaxy[y][x]="III"
+                        sectors+=1
                     if x>r and y>r:
                         galaxy[y][x]="IV"
+                        sectors+=1
                 else:
                         galaxy[y][x]="*"
+        print(str(sectors)+'\n')
         print('\n'.join([''.join(['{:4}'.format(item) for item in row])
       for row in galaxy]))
 
